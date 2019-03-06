@@ -1,4 +1,7 @@
 <h1>Hey! <%= @user.name %></h1>
+
+<%= flash[:notice] %>
+
 <%= button_to "View Meals", meals_path, method: :get%>
 <h2>My Meals:</h2>
 <ul>
@@ -7,10 +10,10 @@
 <% end %>
 </ul>
 
-<h1>Active days:</h1>
-<% @user.active_days.each do |day| %>
-  <p><%= day.strftime("%b, %d, %Y") %></p>
-<% end %>
+<!-- <h1>Active days:</h1>
+<%# @user.active_days.each do |day| %>
+  <p><%# day.strftime("%b, %d, %Y") %></p>
+<%# end %> -->
 
 <% if current_user.id == @user.id %>
 <%= button_to "Logout", logout_path, :method => :delete %>
