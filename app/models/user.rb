@@ -3,7 +3,7 @@ class User < ApplicationRecord
   has_many :user_meals
   has_many :meals, through: :user_meals
 
-  # validates :name, uniqueness: true
+  validates_uniqueness_of :name, message: 'Username taken!'
 
   def active_days
     self.meals.map do |meal|
@@ -15,7 +15,6 @@ class User < ApplicationRecord
   # end
 
   #  pt_pw = plainttext_passwrod
-  # def password=(pt_pw)
   #   self.password_digest = BCrypt::Password.create(pt_pw)
   # end
 
