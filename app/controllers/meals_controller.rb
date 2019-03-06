@@ -34,7 +34,7 @@ class MealsController < ApplicationController
     # byebug
     meal = Meal.find(params[:id])
     UserMeal.create(user_id: current_user.id, meal_id: params[:id])
-    redirect_to user_path(meal)
+    redirect_to user_path(current_user.id)
   end
 
   def destroy

@@ -3,7 +3,7 @@
 <h2>My Meals:</h2>
 <ul>
 <% @user.meals.each do |meal| %>
-  <li><%= link_to meal.name, meal %></li>
+  <li><%= link_to meal.name, meal %>, eaten at: <%=  meal.created_at %> </li>
 <% end %>
 </ul>
 
