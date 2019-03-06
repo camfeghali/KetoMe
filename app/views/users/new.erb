@@ -1,5 +1,5 @@
 <h1>Sign up</h1>
-
+<%= button_to "Go to Sign In", login_path, method: :get%>
 <% if flash[:errors] != nil %>
   <% flash[:errors].each do |error| %>
     <%= error %>
