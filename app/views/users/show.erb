@@ -1,4 +1,7 @@
 <h1>Hey! <%= @user.name %></h1>
+
+<%= flash[:notice] %>
+
 <%= button_to "View Meals", meals_path, method: :get%>
 <h2>My Meals:</h2>
 <ul>
@@ -7,17 +10,10 @@
 <% end %>
 </ul>
 
-
-<% counter = 0 %>
-<% 7.times do %>
-  <% that_day = Date.today - counter %>
-  <h1><%= that_day %>: </h1>
-  <% @user.this_day_meals_name(that_day).each do |meal| %>
-    <%= link_to meal, meal_path(meal) %>,
-  <% end %>
-  <%= @user.this_day_net_carbs(that_day) %> / 25 allowed carbs
-  <% counter += 1 %>
-<% end %>
+<!-- <h1>Active days:</h1>
+<%# @user.active_days.each do |day| %>
+  <p><%# day.strftime("%b, %d, %Y") %></p>
+<%# end %> -->
 
 
 <% if current_user.id == @user.id %>

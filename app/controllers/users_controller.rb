@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-
   skip_before_action :authorized, only: [:new, :create]
+  before_action :custom_view, only: :show
 
   def show
     @user = User.find(params[:id])
@@ -25,16 +25,23 @@ class UsersController < ApplicationController
   def destroy # DELETE request /users/:id
     @user = User.find(params[:id])
     @user.destroy
-    flash[:notice] = 'You deleted ur account. YEET!'
+    flash[:notice] = 'Your account has been deleted'
     redirect_to new_user_path
   end
 
+  private
 
-    private
+  def user_params
+    params.require(:user).permit(:name, :password)
+  end
 
-    def user_params
-      params.require(:user).permit(:name, :password)
+  def custom_view
+    @user = User.find(params[:id])
+    if current_user.id != @user.id
+      flash[:notice] = "You are not logged into this account"
+      redirect_to current_user
     end
+  end
 end
 
 #   skip_before_action :authorized, only: [:new, :create]
