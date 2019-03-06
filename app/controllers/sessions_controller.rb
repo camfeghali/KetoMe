@@ -11,7 +11,6 @@ class SessionsController < ApplicationController
     #see if the user's name exists in the database and save it to an instance variable
     # byebug
     @user = User.find_by(name: params[:name])
-      # byebug
     #if the user name does exist AND their authentification checks out using their submitted password, which is saved in the params, then we set session at a key of user_id to this user's object id (this is what allows their session to continually persist no matter which page they navigate to) then redirect them to their show page
     if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id

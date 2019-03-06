@@ -17,4 +17,5 @@ class ApplicationController < ActionController::Base
     #the user is redirected if the logged_in? method does not return true
     redirect_to login_path unless logged_in?
   end
+
 end
