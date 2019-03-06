@@ -2,10 +2,14 @@
 <%= button_to "View Ingredients", ingredients_path, method: :get%>
 <%= button_to "My profile", user_path(current_user), method: :get%>
 <h2>Search for a meal: </h2>
-<%= form_tag(meals_path, method: :get)  do %>
+
+
+<%= form_tag(search_path, method: :put)  do %>
   <%= text_field_tag :search, params[:search] %>
   <%= submit_tag 'Search' %>
 <% end %>
+
+
 <% @meals.each do |meal| %>
   <p><%= link_to meal.name, meal %></p>
 <% end %>

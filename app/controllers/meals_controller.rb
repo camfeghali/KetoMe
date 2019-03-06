@@ -1,4 +1,12 @@
 class MealsController < ApplicationController
+
+  def api_request
+    url = "https://api.edamam.com/search?q=pasta&app_id=e4daba66&app_key=138fda9b669132a229ab76b02e149d6a&from=0&to=3&calories=591-722&health=alcohol-free"
+    response = RestClient.get(url)
+    hash = JSON.parse(response)["hits"]
+  end
+
+
   def index
     if params[:search] == nil
      @meals = Meal.all
@@ -11,6 +19,7 @@ class MealsController < ApplicationController
      @meals = Meal.where(name: params[:search])
    end
   end
+
 
   def show
     @meal = Meal.find(params[:id])
@@ -31,7 +40,6 @@ class MealsController < ApplicationController
   end
 
   def update
-    # byebug
     meal = Meal.find(params[:id])
     UserMeal.create(user_id: current_user.id, meal_id: params[:id], added_at: Time.now)
     redirect_to user_path(current_user.id)

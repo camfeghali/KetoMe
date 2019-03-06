@@ -1,0 +1,5 @@
+class ApiDataGetterController < ApplicationController
+
+
+
+end
