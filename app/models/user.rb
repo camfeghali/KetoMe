@@ -5,9 +5,43 @@ class User < ApplicationRecord
 
   validates_uniqueness_of :name, message: 'Username taken!'
 
-  def active_days
+  # def active_days
+  #   self.meals.map do |meal|
+  #     meal.created_at
+  #   end
+  # end
+
+  def this_day_net_carbs(day)
+
+    this_day_meals(day).map do |meal|
+      meal.net_carbs_calculator
+    end.inject(0){|sum,x| sum + x }
+  end
+
+  def this_day_meals_name(day)
+    this_day_meals(day).map{|meal| meal.name}
+  end
+
+  def this_day_meals(day)
+    this_day_user_meals(day).map do |user_meal|
+      user_meal.meal
+    end
+  end
+
+  def this_day_user_meals(day)
+    self.user_meals.select do |user_meal|
+      # byebug
+      user_meal.added_at.to_s[0..9] == day.to_s
+    end
+  end
+
+  def todays_carbs
+    carbs_array.inject(0){|sum,x| sum + x }
+  end
+
+  def carbs_array
     self.meals.map do |meal|
-      meal.created_at
+      meal.net_carbs_calculator
     end
   end
   # def password

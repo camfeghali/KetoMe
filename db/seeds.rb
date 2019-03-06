@@ -27,14 +27,14 @@ meal_ingredient10 = MealIngredient.create(meal_id: 6, ingredient_id: 2)
 meal_ingredient11 = MealIngredient.create(meal_id: 4, ingredient_id: 6)
 meal_ingredient12 = MealIngredient.create(meal_id: 5, ingredient_id: 4)
 
-usermeal1 = UserMeal.create(user_id: 1, meal_id: 1)
+usermeal1 = UserMeal.create(user_id: 1, meal_id: 1, added_at: Date.today-1)
 
-usermeal3 = UserMeal.create(user_id: 1, meal_id: 4)
+usermeal3 = UserMeal.create(user_id: 1, meal_id: 4,added_at: Date.today-2)
 
-usermeal6 = UserMeal.create(user_id: 1, meal_id: 1)
+usermeal6 = UserMeal.create(user_id: 1, meal_id: 1, added_at: Date.today-3)
 
-usermeal8 = UserMeal.create(user_id: 1, meal_id: 4)
+usermeal8 = UserMeal.create(user_id: 1, meal_id: 4, added_at: Date.today-4)
 
-usermeal10 = UserMeal.create(user_id: 1, meal_id: 5)
+usermeal10 = UserMeal.create(user_id: 1, meal_id: 5, added_at: Date.today-5)
 
-usermeal12 = UserMeal.create(user_id: 1, meal_id: 4)
+usermeal12 = UserMeal.create(user_id: 1, meal_id: 4, added_at: Date.today-6)

@@ -9,12 +9,17 @@
 <h2>Nutritional value:</h2>
 <ul>
   <li>Calories: <%= @meal.calory_calculator %></li>
+  <li>Carbs: <%= @meal.carbs_calculator %></li>
+  <li>Fiber: <%= @meal.fiber_calculator %></li>
+  <li>Sugar: <%= @meal.sugar_calculator %></li>
+  <li>Net Carbs: <%= @meal.net_carbs_calculator %></li>
+
 </ul>
 
 <%= form_for @meal do |f| %>
   <%= f.label "Add this meal to your profile" %>
   <%= f.hidden_field :user_id, value: current_user.id %>
-  <%= f.submit %>
+  <%= f.submit "Add Meal" %>
 <% end %>
 
 <%= button_to "delete", @meal, :method => :delete %>

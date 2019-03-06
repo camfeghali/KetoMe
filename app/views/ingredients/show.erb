@@ -1,5 +1,9 @@
 <h1><%= @ingredient.name.capitalize %></h1>
 <%= button_to "View Ingredients", ingredients_path, method: :get%>
 <h2>Calories: <%= @ingredient.calories %></h2>
+<h2>Carbs: <%= @ingredient.carbs %></h2>
+<h2>Fiber: <%= @ingredient.fiber %></h2>
+<h2>Sugar: <%= @ingredient.sugar %></h2>
+<h2>Net Carbs: <%= @ingredient.net_carbs %></h2>
 
 <%= button_to "delete", @ingredient, :method => :delete %>
