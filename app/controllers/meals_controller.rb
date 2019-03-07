@@ -8,13 +8,35 @@ class MealsController < ApplicationController
   end
 
 
-  def recipe_names(search_term)
-    api_request(search_term).map do |recipe|
-       Meal.find_or_create_by(name: recipe["recipe"]["label"])
-       # byebug
+  def make_meals_and_ingredients(search_term)
+    zemeals = []
+    api_request(search_term).each do |recipe|
+        feeds = recipe["recipe"]["yield"]
+        # byebug
+        zemeal = Meal.find_or_create_by(name: recipe["recipe"]["label"], meal_type: recipe["recipe"]["dietLabels"][0], image_url: recipe["recipe"]["image"], calories: recipe["recipe"]["calories"]/feeds , net_carbs: recipe["recipe"]["totalNutrients"]["CHOCDF"]["quantity"]/feeds ,fiber: recipe["recipe"]["totalNutrients"]["FIBTG"]["quantity"]/feeds ,sugar: recipe["recipe"]["totalNutrients"]["SUGAR"]["quantity"]/feeds)
+        zemeals << zemeal
+        recipe["recipe"]["ingredientLines"].each do |ingredient|
+          ingredient = Ingredient.find_or_create_by(name: ingredient)
+          MealIngredient.find_or_create_by(meal_id: zemeal.id, ingredient_id: ingredient.id)
+        end
     end
-    # byebug
+    zemeals
   end
+
+  # def make_ingredients(search_term)
+  #   api_request(search_term).map do |recipe|
+  #     recipe_ingredients(recipe)
+  #   end
+  # end
+
+  # recipe_ingredients(recipe).each do |ingredient|
+  #   ingredient = Ingredient.find_or_create_by(name: ingredient)
+  #   MealIngredient.find_or_create_by(meal_id: meal.id, ingredient_id: ingredient.id)
+  # end
+
+  # def recipe_ingredients(recipe)
+  #     recipe["recipe"]["ingredientLines"]
+  # end
 
   def index
     if params[:search] == nil
@@ -24,9 +46,7 @@ class MealsController < ApplicationController
    elsif params[:search][0] != ""
      # meal_list = Meal.all
      # @meals = Meal.search_results(params[:search], meal_list)
-     # byebug
-     @meals = recipe_names(params[:search])
-     # byebug
+     @meals = make_meals_and_ingredients(params[:search])
    else
      @meals = Meal.where(name: params[:search])
    end

@@ -12,5 +12,10 @@
 
 
 <% @meals.each do |meal| %>
-  <p><%= link_to meal.name, meal %></p>
+  <h3><%= link_to meal.name, meal %>, <%= meal.meal_type %></h3>
+  <% if meal.image_url %>
+    <%= image_tag(meal.image_url) %>
+    <%= meal.calories %>
+    <h1><%= meal.meal_type %></h1>
+  <% end %>
 <% end %>

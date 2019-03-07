@@ -8,7 +8,7 @@ class User < ApplicationRecord
   def this_day_net_carbs(day)
 
     this_day_meals(day).map do |meal|
-      meal.net_carbs_calculator
+      meal.net_carbs
     end.inject(0){|sum,x| sum + x }
   end
 
