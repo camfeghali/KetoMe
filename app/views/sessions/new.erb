@@ -1,13 +1,33 @@
-<h1>Login</h1>
-<%= button_to "Go to Sign-up", new_user_path, method: :get%>
+<br>
+<br>
+<br>
+<div class="d-flex justify-content-center row-hl">
+  <div class="p-4 item-hl form-outline">
+    <h1 class = "text-center signup-h1-white">Login!</h1>
+    <% if flash[:errors] != nil %>
+      <% flash[:errors].map do |error| %>
+        <p class = "text-center signup-h1-white"><%= "Username taken!" %>,</p>
+      <% end %>
+    <% end %>
+    <%= form_tag login_path, method: :post, class: "form_group" do |f| %>
+      <%# <%= f.label :name %>
+      <%= text_field_tag :name, "Username", class: "form-control" %>
+      <br>
+      <%= password_field_tag :password, "", class: "form-control" %>
+      <div class="d-flex justify-content-around row-hl ">
+        <div class="p-4 item-hl ">
+          <div style="align-items: center">
+            <%= submit_tag "Login", class: "btn btn-outline-light btn-sm center-block margin"%>
+
+          </div>
+
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <br>
+  <br>
+  <%= button_to "Go to Sign up", new_user_path, method: :get, class: "btn btn-outline-light btn-sm center-block center-block"%>
+</div>
+
 <h3><%= flash[:message] %></h3>
-
-<%#form_tag knows that this is a post request because we're using conventional naming and we're submitting from a new page  %>
-<%= form_tag login_path, method: :post do %>
-  <%= label_tag :name %>
-  <%= text_field_tag :name%>
-  <%= label_tag :password %>
-  <%= password_field_tag :password%>
-
-  <%= submit_tag 'Login' %>
-<% end %>

@@ -1,3 +1,44 @@
 // Place all the styles related to the Meals controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// .navbar.transparent.navbar-inverse .navbar-inner {
+//    background: rgba(0,0,0,0.4);
+// }
+
+.navbar-custom {
+   background-color: rgba(0,0,0,0.5);
+   background: rgba(0,0,0,0.5);
+   border-color: rgba(0,0,0,0.5);
+   height: 40px;
+}
+.navbar li { color: #000 }
+
+.nav-link {
+  color: white;
+}
+
+.navbar-brand {
+  color: white;
+}
+
+.curvy-image{
+  border: 1px solid white;
+  border-radius: 27px;
+}
+
+#recipe-column {
+  width: 300px;
+}
+
+#nutrient-column {
+  width: 300px;
+}
+
+#image-column {
+  width: 300px;
+}
+
+#image-margin {
+  margin-left: 7%;
+}

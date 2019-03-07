@@ -1,23 +1,69 @@
-<h1><%= @meal.name %></h1>
+
+
+<!-- -------------------- Test page ---------------------- -->
+<!-- <div class="container">
+  <div class="container">
+    <div class="row align-items-center" style="height:200px;border:1px #333 solid">
+        <div class="col">
+          <h3 class = "text-center signup-h1-white form-outline">Recipe</h3>
+          <ul>
+            <%@ingredients.each do |ingredient| %>
+              <li><p class = "text-left signup-h1-white"><%= ingredient.name%></p></li>
+            <% end %>
+          </ul>
+        </div>
+        <div class="col">
+          <h3 class = "text-center signup-h1-white"><%= @meal.name %></h3>
+          <%= image_tag(@meal.image_url, :class => "curvy-image") %>
+        </div>
+        <div class="col">
+            Middle Aligned Text
+        </div>
+    </div>
+  </div>
+</div> -->
+
+<!-- -------------------- Styling Page ---------------------- -->
+<div class="d-flex justify-content-center row-hl">
+
+  <div id = "recipe-column" class="p-4 item-hl align-center ">
+    <h3 class = "text-center signup-h1-white form-outline">Recipe</h3>
+    <ul>
+      <%@ingredients.each do |ingredient| %>
+        <li class = "text-left signup-h1-white"><p class = "text-left signup-h1-white"><%= ingredient.name%></p></li>
+      <% end %>
+    </ul>
+  </div>
+  <div id = "image-column" class="p-4 item-hl align-center">
+    <div id = "image-margin">
+      <h5 class = "signup-h1-white"><%= @meal.name %></h5>
+    </div>
+    <%= image_tag(@meal.image_url, :class => "curvy-image") %>
+    <%= form_for @meal do |f| %>
+      <%= f.hidden_field :user_id, value: current_user.id %>
+      <%= f.submit "Add to my profile", class: "btn btn-outline-light btn-sm center-block margin" %>
+    <% end %>
+  </div>
+  <div id = "nutrient-column" class="p-4 item-hl align-center">
+    <h3 class = "text-center signup-h1-white form-outline">Nutrients</h3>
+    <ul>
+      <li class = "text-left signup-h1-white">Nutritional value:</li>
+      <li class = "text-left signup-h1-white">Calories: <%= @meal.calories %> kcal </li>
+      <li class = "text-left signup-h1-white">Net Carbs: <%= @meal.net_carbs %> g</li>
+      <li class = "text-left signup-h1-white">Sugar: <%= @meal.sugar %> g</li>
+      <li class = "text-left signup-h1-white">Fiber: <%= @meal.fiber %> g</li>
+    </ul>
+
+  </div>
+</div>
+
 <%= image_tag(@meal.image_url) %>
 <%= button_to "View Meals", ingredients_path, method: :get%>
 <h2>Ingredients:</h2>
-<ul>
-  <%@ingredients.each do |ingredient| %>
-    <li><%= link_to ingredient.name, ingredient %>, calories: <%= ingredient.calories %></li>
-  <% end %>
-</ul>
-<h2>Nutritional value:</h2>
-<h3>Calories: <%= @meal.calories %></h3>
-<h3>Net Carbs: <%= @meal.net_carbs %></h3>
-<h3>Sugar: <%= @meal.sugar %></h3>
-<h3>Fiber: <%= @meal.fiber %></h3>
 
 
-<%= form_for @meal do |f| %>
-  <%= f.label "Add this meal to your profile" %>
-  <%= f.hidden_field :user_id, value: current_user.id %>
-  <%= f.submit "Add Meal" %>
-<% end %>
+
+
+
 
 <%= button_to "delete", @meal, :method => :delete %>

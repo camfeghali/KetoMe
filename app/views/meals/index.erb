@@ -1,21 +1,32 @@
-<h1>All Meals</h1>
-<%= button_to "View Ingredients", ingredients_path, method: :get%>
-<%= button_to "My profile", user_path(current_user), method: :get%>
-<h2>Search for a meal: </h2>
 
 
 
-<%= form_tag(meals_path, method: :get)  do %>
-  <%= text_field_tag :search, params[:search] %>
-  <%= submit_tag 'Search' %>
-<% end %>
+<div class="container">
+  <div class="d-flex justify-content-center row-hl">
+   <div class="p-4 item-hl">
+     <h3 class="signup-h1-white">Search for a meal </h3>
 
+     <%= form_tag meals_path, method: :get, class: "form-inline md-form mr-auto mb-4" do |f|%>
+       <%= text_field_tag :search, params[:search],  class: "form-control mr-sm-2" %>
+       <%= submit_tag 'Search', class: "btn btn-outline-light btn-rounded btn-sm my-0" %>
+     <% end %>
+  </div>
+ </div>
+</div>
 
-<% @meals.each do |meal| %>
-  <h3><%= link_to meal.name, meal %>, <%= meal.meal_type %></h3>
-  <% if meal.image_url %>
-    <%= image_tag(meal.image_url) %>
-    <%= meal.calories %>
-    <h1><%= meal.meal_type %></h1>
-  <% end %>
-<% end %>
+<div class="container">
+  <div class="card-columns">
+    <% @meals.each do |meal| %>
+
+    <div class="card">
+      <%= image_tag(meal.image_url, :class => "card-img-top img-fluid") %>
+      <div class="card-body">
+        <h4><%= link_to meal.name, meal %></h4>
+        <h5><%= meal.meal_type %></h5>
+        <p> Calories: <%= meal.calories %></p>
+        <p> Carbs: <%= meal.net_carbs %></p>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>

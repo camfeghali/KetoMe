@@ -1,28 +1,35 @@
-<h1>Hey! <%= @user.name %></h1>
+
 
 <%= flash[:notice] %>
 
-<%= button_to "View Meals", meals_path, method: :get%>
-<h2>My Meals:</h2>
-<ul>
-<% @user.meals.each do |meal| %>
-  <li><%= link_to meal.name, meal %>, eaten at: <%=  meal.created_at %> </li>
-<% end %>
-</ul>
+<div class="container">
+  <div class="d-flex justify-content-center row-hl">
+   <div class="p-4 item-hl signup-h1-white">
+      <h2 class ="text-center">Hey <%= @user.name.capitalize %> !</h2>
+      <h4>This is your meal history</h4>
+  </div>
+ </div>
+</div>
 
-<% counter = 0 %>
-<% 7.times do %>
-  <% that_day = Date.today - counter %>
-  <h1><%= that_day %>: </h1>
-  <% @user.this_day_meals_name(that_day).each do |meal| %>
-    <%= link_to meal, meal_path(meal) %>,
-  <% end %>
-  <%= @user.this_day_net_carbs(that_day) %> / 25 allowed carbs
-  <% counter += 1 %>
-<% end %>
-
-
-<% if current_user.id == @user.id %>
-<%= button_to "Logout", logout_path, :method => :delete %>
-<%= button_to "Delete Account", @user, :method => :delete, data: { confirm: 'Are you sure you want to delete this account?'} %>
-<% end %>
+<div class="container">
+  <div class="card-columns">
+    <% counter = 0 %>
+    <% 7.times do %>
+    <% that_day = Date.today - counter %>
+    <div class="card text-center">
+         <div class="card-body">
+             <h4 class="card-title"><%= that_day.strftime("%A, %b, %d") %></h4>
+             <p class="card-text">  <% @user.this_day_meals_name(that_day).each do |meal| %>
+                 - <%= link_to meal, meal_path(meal) %>
+                 <br>
+               <% end %>
+               <%= @user.this_day_net_carbs(that_day) %> / 25 allowed carbs</p>
+             <p class="card-text">
+                 <small class="text-muted">Last updated 3 mins ago</small>
+             </p>
+         </div>
+     </div>
+     <% counter += 1 %>
+     <% end %>
+  </div>
+</div>

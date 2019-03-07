@@ -1,17 +1,35 @@
-<h1>Sign up</h1>
-<%= button_to "Go to Sign In", login_path, method: :get%>
 <br>
-<% if flash[:errors] != nil %>
-  <% flash[:errors].each do |error| %>
-    <%= error %>
-  <% end %>
-<% end %>
+<br>
+<br>
+<div class="d-flex justify-content-center row-hl">
+  <div class="p-4 item-hl form-outline">
+    <h1 class = "text-center signup-h1-white">Sign up!</h1>
+    <% if flash[:errors] != nil %>
+      <% flash[:errors].map do |error| %>
+        <p class = "text-center signup-h1-white"><%= "Username taken!" %>,</p>
+      <% end %>
+    <% end %>
+    <%= form_for @user, class: "form_group" do |f| %>
+      <%# <%= f.label :name %>
+      <%= f.text_field :name, placeholder: "Username", class: "form-control" %>
+      <br>
+      <%# <%= f.label :password %>
+      <%= f.password_field :password, placeholder: "", class: "form-control" %>
+      <div class="d-flex justify-content-around row-hl ">
+        <div class="p-4 item-hl ">
+          <div style="align-items: center">
+            <%= f.submit "Sign up", class: "btn btn-outline-light btn-sm center-block margin"%>
 
-<%= form_for @user do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  <%= f.label :password %>
-  <%= f.password_field :password %>
-  <%= f.submit%>
+          </div>
 
-<% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <br>
+  <br>
+  <%= button_to "Go to Login", login_path, method: :get, class: "btn btn-outline-light btn-sm center-block center-block"%>
+</div>
+
+
+<br>
