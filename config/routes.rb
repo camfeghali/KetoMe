@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  put '/meals/search', to: 'meals#api_request', as: 'search'
+  put '/meals/search', to: 'meals#recipe_name', as: 'search'
 
   resources :meal_ingredients
   resources :ingredients

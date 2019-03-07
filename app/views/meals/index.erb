@@ -4,7 +4,8 @@
 <h2>Search for a meal: </h2>
 
 
-<%= form_tag(search_path, method: :put)  do %>
+
+<%= form_tag(meals_path, method: :get)  do %>
   <%= text_field_tag :search, params[:search] %>
   <%= submit_tag 'Search' %>
 <% end %>

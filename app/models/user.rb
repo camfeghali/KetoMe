@@ -5,12 +5,6 @@ class User < ApplicationRecord
 
   validates_uniqueness_of :name, message: 'Username taken!'
 
-  # def active_days
-  #   self.meals.map do |meal|
-  #     meal.created_at
-  #   end
-  # end
-
   def this_day_net_carbs(day)
 
     this_day_meals(day).map do |meal|
