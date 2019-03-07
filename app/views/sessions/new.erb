@@ -3,6 +3,7 @@
 <br>
 <div class="d-flex justify-content-center row-hl">
   <div class="p-4 item-hl form-outline">
+    <h5 class = "text-center signup-h1-white"><%= flash[:message] %></h5>
     <h1 class = "text-center signup-h1-white">Login!</h1>
     <% if flash[:errors] != nil %>
       <% flash[:errors].map do |error| %>
@@ -29,5 +30,3 @@
   <br>
   <%= button_to "Go to Sign up", new_user_path, method: :get, class: "btn btn-outline-light btn-sm center-block center-block"%>
 </div>
-
-<h3><%= flash[:message] %></h3>
