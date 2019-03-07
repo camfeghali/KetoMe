@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :meals
   resources :users, only: [:show, :new, :create, :destroy]
 
-  # root 'application#home'
+  root to: 'application#index'
 
   get '/login', to: 'sessions#new', as: 'login'
   post '/login', to: 'sessions#create'

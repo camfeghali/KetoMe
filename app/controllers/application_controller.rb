@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :authorized
-  
+
   # skip_before_action :authorized, only: [:new, :create] #this will lock down the app so the user can only use it if they're signed into their account
   helper_method :current_user
 
@@ -19,7 +19,9 @@ class ApplicationController < ActionController::Base
     redirect_to login_path unless logged_in?
   end
 
+  def index
+    #code
+  end
 
-  
 
 end
