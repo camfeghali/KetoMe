@@ -5,6 +5,11 @@ class Meal < ApplicationRecord
   has_many :meal_ingredients
   has_many :ingredients, through: :meal_ingredients
 
+
+  def self.get_id(recipe_name)
+    Meal.find_by(name: recipe_name).id
+  end
+  
   # def net_carbs_calculator
   #   carbs_calculator - fiber_calculator
   # end

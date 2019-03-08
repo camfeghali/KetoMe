@@ -20,7 +20,7 @@
          <div class="card-body">
              <h4 class="card-title"><%= that_day.strftime("%A, %b, %d") %></h4>
              <p class="card-text">  <% @user.this_day_meals_name(that_day).each do |meal| %>
-                 - <%= link_to meal, meal_path(meal) %>
+                 - <%= link_to meal, "/meals/#{Meal.get_id(meal)}" %>
                  <br>
                <% end %>
                <%= @user.this_day_net_carbs(that_day) %> / 25 allowed carbs</p>

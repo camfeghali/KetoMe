@@ -83,6 +83,10 @@ class MealsController < ApplicationController
     redirect_to meals_path
   end
 
+  def self.get_id(recipe_name)
+    Meal.find_by(name: recipe_name).id
+  end
+
   private
 
   def meal_params
