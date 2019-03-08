@@ -1,6 +1,10 @@
 <br>
-<br>
-<br>
+
+<div class="d-flex justify-content-center row-hl">
+  <div class="p-4 item-hl">
+    <%= button_to "Go to Sign up", new_user_path, method: :get, class: "btn btn-outline-light btn-sm center-block center-block"%>
+  </div>
+</div>
 <div class="d-flex justify-content-center row-hl">
   <div class="p-4 item-hl form-outline">
     <h5 class = "text-center signup-h1-white"><%= flash[:message] %></h5>
@@ -12,7 +16,7 @@
     <% end %>
     <%= form_tag login_path, method: :post, class: "form_group" do |f| %>
       <%# <%= f.label :name %>
-      <%= text_field_tag :name, "Username", class: "form-control" %>
+        <%= text_field_tag :name, nil, placeholder: 'Username', class: "form-control" %>
       <br>
       <%= password_field_tag :password, "", class: "form-control" %>
       <div class="d-flex justify-content-around row-hl ">
@@ -28,5 +32,5 @@
   </div>
   <br>
   <br>
-  <%= button_to "Go to Sign up", new_user_path, method: :get, class: "btn btn-outline-light btn-sm center-block center-block"%>
+
 </div>

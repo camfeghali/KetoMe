@@ -3,8 +3,8 @@ Rails.application.routes.draw do
   put '/meals/search', to: 'meals#recipe_name', as: 'search'
 
   resources :meal_ingredients
-  resources :ingredients
-  resources :meals
+  # resources :ingredients
+  resources :meals, only: [:index, :show, :create, :update]
   resources :users, only: [:show, :new, :create, :destroy]
 
   root to: 'application#index'

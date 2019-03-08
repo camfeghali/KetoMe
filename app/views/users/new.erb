@@ -1,6 +1,10 @@
 <br>
-<br>
-<br>
+
+<div class="d-flex justify-content-center row-hl">
+  <div class="p-4 item-hl">
+      <%= button_to "Go to Login", login_path, method: :get, class: "btn btn-outline-light btn-sm center-block center-block"%>
+  </div>
+</div>
 <div class="d-flex justify-content-center row-hl">
   <div class="p-4 item-hl form-outline">
     <h1 class = "text-center signup-h1-white">Sign up!</h1>
@@ -19,16 +23,14 @@
         <div class="p-4 item-hl ">
           <div style="align-items: center">
             <%= f.submit "Sign up", class: "btn btn-outline-light btn-sm center-block margin"%>
-
           </div>
-
         </div>
       </div>
     <% end %>
   </div>
   <br>
   <br>
-  <%= button_to "Go to Login", login_path, method: :get, class: "btn btn-outline-light btn-sm center-block center-block"%>
+
 </div>
 
 

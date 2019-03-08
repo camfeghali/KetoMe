@@ -27,6 +27,12 @@
   border-radius: 27px;
 }
 
+.card {
+  width: 250px;
+  box-shadow: 0 4px 8px 5px rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(255, 255, 255, 0.60);
+  text-align: center;
+}
+
 #recipe-column {
   width: 300px;
 }

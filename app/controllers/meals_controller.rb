@@ -1,4 +1,5 @@
 class MealsController < ApplicationController
+before_action :authorized
 
   def api_request(search_term)
     search_term.chomp.gsub(' ', '%20')
