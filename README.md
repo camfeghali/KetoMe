@@ -17,12 +17,13 @@ Link to demo: https://youtube....... remains to be hosted.
 - Bootstrap 4
 
 ### Features
-
-- Users can look up recipes. 
-- Users can look at a recipe's instruction.
-- Users can see a recipe's nutritional value.
-- Users add that recipe to their consumption history.
-- Users can see how many carbohydrates they consumed everyday for the last week.
+- Users can:
+  - Register and Login.
+  - Look up recipes. 
+  - Look at a recipe's instruction.
+  - See a recipe's nutritional value.
+  - Add that recipe to their consumption history.
+  - See how many carbohydrates they consumed everyday for the last week.
 
 ### Installation
 - Clone this repository
