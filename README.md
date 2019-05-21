@@ -1,5 +1,5 @@
 ### KetoMe
-KetoMe is a fullstack web application built with Ruby on Rail. KetoMe integrates the Edamam API, and allows users to look for recipes, and keep track of their nutritional intake to monitor their performance as it pertains to the keto diet, more on the diet here: https://www.healthline.com/nutrition/ketogenic-diet-101
+KetoMe is a fullstack web application built with Ruby on Rails. KetoMe integrates the Edamam API, and allows users to look for recipes, and keep track of their nutritional intake to monitor their performance as it pertains to the keto diet, more on the diet here: https://www.healthline.com/nutrition/ketogenic-diet-101
 
 ### Motivation
 Built together with @dren39 who was on the ketogenesis diet at the time, we wanted to make a tool that would allow him to measure how much carbohydrates and other nutrients he consumed on a daily basis.
